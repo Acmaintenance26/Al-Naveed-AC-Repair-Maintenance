@@ -37,6 +37,8 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
   if (!post) return { robots: { index: false, follow: false } };
   return pageMetadata({
     title: post.title,
+    // Long headlines go out without the brand suffix so search results do not cut them off.
+    absoluteTitle: post.title.length > 52,
     description: post.description,
     path: postPath(post.slug),
     type: "article",

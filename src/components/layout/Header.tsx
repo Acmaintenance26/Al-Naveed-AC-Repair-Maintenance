@@ -21,7 +21,6 @@ export function Logo({ onClick, tone = "light" }: { onClick?: () => void; tone?:
       href="/"
       onClick={onClick}
       className="flex shrink-0 items-center gap-3"
-      aria-label={`${site.name}, home`}
     >
       <LogoMark size={40} />
       <span className="flex flex-col leading-none">
@@ -36,6 +35,7 @@ export function Logo({ onClick, tone = "light" }: { onClick?: () => void; tone?:
           AC Repair &amp; Maintenance
         </span>
       </span>
+      <span className="sr-only">, home page</span>
     </Link>
   );
 }

@@ -195,7 +195,7 @@ export function AssistantPanel({ open, messages, setMessages, onClose }: Props) 
             transition={{ duration: 0.2, ease: [0.22, 0.8, 0.26, 1] }}
             className="fixed inset-x-0 bottom-[calc(3.75rem+env(safe-area-inset-bottom))] z-40 flex h-[min(34rem,calc(100dvh-8.5rem))] flex-col overflow-hidden border-t border-line bg-white shadow-[0_-18px_50px_-18px_rgb(16_28_44/0.45)] lg:inset-x-auto lg:right-6 lg:bottom-24 lg:h-[min(37rem,calc(100dvh-8rem))] lg:w-[25rem] lg:rounded-lg lg:border lg:shadow-[0_24px_70px_-20px_rgb(16_28_44/0.5)]"
           >
-            <header className="flex items-center gap-3 bg-navy px-4 py-3.5 text-white">
+            <div className="flex items-center gap-3 bg-navy px-4 py-3.5 text-white">
               <LogoMark size={36} />
               <div className="min-w-0 flex-1">
                 <h2 className="truncate text-[1rem] leading-tight font-bold text-white">
@@ -213,10 +213,11 @@ export function AssistantPanel({ open, messages, setMessages, onClose }: Props) 
               >
                 <X size={20} aria-hidden="true" />
               </button>
-            </header>
+            </div>
 
             <div ref={logRef} className="flex-1 overflow-y-auto overscroll-contain px-4 py-5">
-              <ul role="log" aria-live="polite" aria-busy={busy} className="grid gap-3">
+              <div role="log" aria-live="polite" aria-busy={busy}>
+                <ul className="grid gap-3">
                 {messages.map((message, i) =>
                   message.content ? (
                     <Bubble key={i} message={message} onNavigate={onClose} />
@@ -237,7 +238,8 @@ export function AssistantPanel({ open, messages, setMessages, onClose }: Props) 
                     </span>
                   </li>
                 )}
-              </ul>
+                </ul>
+              </div>
 
               {userTurns === 0 && (
                 <ul className="mt-5 flex flex-wrap gap-2" aria-label="Suggested questions">

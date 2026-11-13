@@ -159,7 +159,7 @@ export const areas: Area[] = [
     name: "Downtown Dubai",
     blurb: "High-rise apartments and offices around Burj Khalifa, mostly on chilled water.",
     title: "AC Repair & Maintenance in Downtown Dubai",
-    metaTitle: "AC Repair Downtown Dubai | Fan Coil Units and Thermostats",
+    metaTitle: "AC Repair Downtown Dubai | Fan Coil Unit Repair",
     metaDescription:
       "AC repair and maintenance for Downtown Dubai apartments and offices: fan coil units, thermostats, actuators, drain lines and duct cleaning.",
     lead: "For apartments and offices in the towers around Burj Khalifa. Most are cooled by chilled water, so the work is on the fan coil unit, thermostat and ducts inside your property.",

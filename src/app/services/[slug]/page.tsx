@@ -51,6 +51,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         lead={service.lead}
         actions
         whatsappMessage={`Hello Al Naveed AC, I need help with ${name}.`}
+        bookHref={`/book?service=${service.slug}`}
       />
 
       <section className="section bg-white">

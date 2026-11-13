@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
 const base =
-  "inline-flex items-center justify-center gap-2.5 rounded-md font-bold tracking-[-0.01em] whitespace-nowrap transition-colors duration-150 disabled:opacity-60 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2.5 rounded-md py-2 text-center font-bold leading-tight tracking-[-0.01em] transition-colors duration-150 disabled:opacity-60 disabled:pointer-events-none";
 
 const sizes = {
   md: "min-h-12 px-5 text-base",

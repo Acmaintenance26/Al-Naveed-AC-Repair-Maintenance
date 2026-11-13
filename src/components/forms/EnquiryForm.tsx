@@ -242,7 +242,7 @@ export function EnquiryForm({
       noValidate
       className={`rounded-lg border border-line bg-white ${compact ? "p-6 lg:p-7" : "p-7 lg:p-9"}`}
     >
-      <div className={`grid gap-5 ${compact ? "" : "sm:grid-cols-2"}`}>
+      <div className={`grid gap-5 ${compact ? "" : "sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2"}`}>
         <div>
           <label htmlFor={`${id}-name`} className={label}>
             Your name
@@ -316,7 +316,7 @@ export function EnquiryForm({
         </div>
 
         {kind === "booking" && (
-          <div className={compact ? "" : "sm:col-span-2"}>
+          <div className={compact ? "" : "sm:col-span-2 lg:col-span-1 xl:col-span-2"}>
             <label htmlFor={`${id}-preferredTime`} className={label}>
               Preferred time <span className="font-medium text-slate">(optional)</span>
             </label>
@@ -331,7 +331,7 @@ export function EnquiryForm({
           </div>
         )}
 
-        <div className={compact ? "" : "sm:col-span-2"}>
+        <div className={compact ? "" : "sm:col-span-2 lg:col-span-1 xl:col-span-2"}>
           <label htmlFor={`${id}-message`} className={label}>
             What is the AC doing?
           </label>
@@ -371,7 +371,7 @@ export function EnquiryForm({
           disabled={sending}
           className={buttonClass("outline", "lg")}
         >
-          <WhatsAppIcon className="text-whatsapp" />
+          <WhatsAppIcon className="shrink-0 text-whatsapp" />
           Send by WhatsApp instead
         </button>
       </div>

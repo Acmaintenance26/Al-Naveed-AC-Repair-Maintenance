@@ -25,6 +25,14 @@ export function pageMetadata({
   publishedTime,
 }: PageMeta): Metadata {
   const url = absoluteUrl(path);
+  // Set on every page: page-level Open Graph settings replace the site-wide defaults,
+  // which would otherwise drop the sharing image from every page except the homepage.
+  const image = {
+    url: "/opengraph-image.png",
+    width: 1200,
+    height: 630,
+    alt: `AC repair and maintenance in Dubai. ${site.name}, open 24 hours, every day.`,
+  };
   const fullTitle = absoluteTitle ? title : `${title} | ${site.shortName}`;
   return {
     title: absoluteTitle ? { absolute: title } : title,
@@ -38,12 +46,14 @@ export function pageMetadata({
       siteName: site.name,
       locale: "en_AE",
       type,
+      images: [image],
       ...(publishedTime ? { publishedTime } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
+      images: [image],
     },
   };
 }

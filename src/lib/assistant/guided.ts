@@ -21,6 +21,16 @@ const intents: Intent[] = [
     match: /emergenc|urgent|asap|right now|tonight|immediately/i,
     reply: `We are open 24 hours, every day. Phoning is the fastest way to reach us: ${phone}. Tell us your area, your building and what the AC is doing. See [emergency AC repair](/services/emergency-ac-repair-dubai).`,
   },
+  // Price and booking questions come before topic matches, so "how much is a gas refill"
+  // is answered as a price question.
+  {
+    match: /price|cost|charge|fee|how much|rate|quote|quotation|aed|dirham|cheap|expens/i,
+    reply: `I cannot quote prices. The cost depends on the unit, the fault and the parts needed, and our team gives it once they know the details. ${reach}`,
+  },
+  {
+    match: /book|appointment|schedule|visit|come (to|out)|send (a )?technician|slot|available|availability/i,
+    reply: `I cannot confirm appointment times, but you can send a [booking request](/book) and the team will call you to agree one. For anything urgent, call ${phone}. We are open 24 hours.`,
+  },
   {
     match: /leak|drip|water/i,
     reply: `Water usually means a blocked drain line, or ice melting off a frozen coil. Switch the AC off to stop more water forming and put towels down. A technician needs to clear the drain and check the coil. See [AC repair](/services/ac-repair-dubai). ${reach}`,
@@ -44,14 +54,6 @@ const intents: Intent[] = [
   {
     match: /gas|refrigerant|refill|top.?up|recharge|freon/i,
     reply: `Refrigerant is not used up, so an AC only needs gas if there is a leak. A technician measures the pressure, looks for the leak and recharges the system. It is not safe to do yourself. See [AC gas refilling](/services/ac-gas-refilling-dubai).`,
-  },
-  {
-    match: /price|cost|charge|fee|how much|rate|quote|quotation|aed|dirham|cheap|expens/i,
-    reply: `I cannot quote prices. The cost depends on the unit, the fault and the parts needed, and our team gives it once they know the details. ${reach}`,
-  },
-  {
-    match: /book|appointment|schedule|visit|come (to|out)|send (a )?technician|slot|available|availability/i,
-    reply: `I cannot confirm appointment times, but you can send a [booking request](/book) and the team will call you to agree one. For anything urgent, call ${phone}. We are open 24 hours.`,
   },
   {
     match: /duct/i,
