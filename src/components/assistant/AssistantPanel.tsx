@@ -119,9 +119,11 @@ export function AssistantPanel({ open, messages, setMessages, onClose }: Props) 
     return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
+  // Follow the conversation as it grows. The opening message stays at the top so the
+  // "I am an AI assistant" introduction is never scrolled out of view.
   useEffect(() => {
     const log = logRef.current;
-    if (log) log.scrollTop = log.scrollHeight;
+    if (log && messages.length > 1) log.scrollTop = log.scrollHeight;
   }, [messages, open]);
 
   useEffect(() => () => abortRef.current?.abort(), []);
