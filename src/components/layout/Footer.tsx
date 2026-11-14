@@ -71,17 +71,9 @@ export async function Footer() {
           <ul className="mt-5 grid gap-4 text-[0.9375rem] text-white/70">
             <li className="flex gap-3">
               <Phone size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-sky" />
-              <span className="grid gap-1">
-                <a href={telHref()} className="tabular font-semibold text-white hover:underline">
-                  {site.phone.primary.display}
-                </a>
-                <a
-                  href={telHref(site.phone.secondary.e164)}
-                  className="tabular transition-colors hover:text-white"
-                >
-                  {site.phone.secondary.display}
-                </a>
-              </span>
+              <a href={telHref()} className="tabular font-semibold text-white hover:underline">
+                {site.phone.primary.display}
+              </a>
             </li>
             <li className="flex gap-3">
               <WhatsAppIcon width={18} height={18} className="mt-0.5 shrink-0 text-sky" />

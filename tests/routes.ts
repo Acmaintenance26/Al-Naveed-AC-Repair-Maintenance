@@ -50,7 +50,7 @@ export const DRAFTS = ["/blog", ...POSTS.map((p) => `/blog/${p}`)];
 export const ALL_PAGES = [...INDEXABLE, ...DRAFTS];
 
 export const SITE_URL = "https://www.alnaveedac.com";
-export const PHONE_HREFS = ["tel:+971502977603", "tel:+971509124500"];
+export const PHONE_HREFS = ["tel:+971502977603"];
 export const WHATSAPP_PREFIX = "https://wa.me/971502977603?text=";
 
 export const VIEWPORTS = [

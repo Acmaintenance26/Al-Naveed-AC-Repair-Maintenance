@@ -12,7 +12,7 @@ This one file feeds the header, footer, contact page, every call and WhatsApp bu
 
 | To change | Edit |
 | --- | --- |
-| Phone numbers | `phone.primary` and `phone.secondary`. Update both `display` (as people read it) and `e164` (digits only with a plus sign) |
+| Phone number | `phone.primary`. Update both `display` (as people read it) and `e164` (digits only with a plus sign) |
 | WhatsApp number | `whatsapp.number`, digits only, no plus sign |
 | Email | `email` |
 | Address | `address` |

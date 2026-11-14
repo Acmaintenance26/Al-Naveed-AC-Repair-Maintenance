@@ -93,7 +93,7 @@ const intents: Intent[] = [
   },
   {
     match: /phone|call|number|contact|whatsapp|email|reach|speak|talk|human|person|agent|someone/i,
-    reply: `You can call ${phone} or ${site.phone.secondary.display}, message us on WhatsApp on ${site.whatsapp.display}, or email ${site.email}. All the details are on the [contact page](/contact).`,
+    reply: `You can call ${phone}, message us on WhatsApp on ${site.whatsapp.display}, or email ${site.email}. All the details are on the [contact page](/contact).`,
   },
   {
     match: /commercial|office|shop|restaurant|business|warehouse|store/i,

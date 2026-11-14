@@ -22,12 +22,8 @@ export function TopBar() {
             <Mail size={14} aria-hidden="true" className="text-sky" />
             {site.email}
           </a>
-          <a
-            href={telHref(site.phone.secondary.e164)}
-            className="tabular transition-colors hover:text-white"
-          >
-            <span className="sr-only">Alternative number: </span>
-            {site.phone.secondary.display}
+          <a href={telHref()} className="tabular transition-colors hover:text-white">
+            {site.phone.primary.display}
           </a>
         </div>
       </div>

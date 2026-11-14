@@ -9,7 +9,7 @@ Name: ${site.name}
 What it does: air conditioning repair, maintenance, servicing and installation for homes and business premises
 Workshop address: ${addressOneLine}, United Arab Emirates
 Opening hours: ${site.hours.summary}
-Phone: ${site.phone.primary.display} (alternative: ${site.phone.secondary.display})
+Phone: ${site.phone.primary.display}
 WhatsApp: ${site.whatsapp.display}
 Email: ${site.email}
 Service area: Dubai

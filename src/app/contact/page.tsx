@@ -40,15 +40,6 @@ export default function ContactPage() {
                       {site.phone.primary.display}
                     </a>
                   </p>
-                  <p className="mt-1">
-                    <a
-                      href={telHref(site.phone.secondary.e164)}
-                      className="link tabular"
-                      data-cta="contact-call-alt"
-                    >
-                      {site.phone.secondary.display}
-                    </a>
-                  </p>
                 </div>
               </li>
               <li className={row}>

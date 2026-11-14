@@ -45,12 +45,6 @@ export function businessSchema() {
         areaServed: "AE",
         availableLanguage: ["English"],
       },
-      {
-        "@type": "ContactPoint",
-        telephone: site.phone.secondary.e164,
-        contactType: "customer service",
-        areaServed: "AE",
-      },
     ],
     hasMap: site.google.profileUrl,
   };

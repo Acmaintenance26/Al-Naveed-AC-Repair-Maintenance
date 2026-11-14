@@ -18,7 +18,7 @@ test("every internal link resolves and every contact link is correct", async ({ 
         expect(href.startsWith(WHATSAPP_PREFIX), `unexpected WhatsApp link ${href} on ${path}`).toBe(true);
         expect(decodeURIComponent(href.slice(WHATSAPP_PREFIX.length)).length).toBeGreaterThan(10);
       } else if (href.startsWith("mailto:")) {
-        expect(href).toBe("mailto:info@alnaveedac.com");
+        expect(href).toBe("mailto:info@acmaintenancedubai.ae");
       } else if (href.startsWith("/")) {
         internal.add(href.split("#")[0]);
       } else if (href.startsWith("#")) {

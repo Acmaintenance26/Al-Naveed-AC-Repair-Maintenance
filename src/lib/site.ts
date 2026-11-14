@@ -13,11 +13,10 @@ export const site = {
 
   phone: {
     primary: { display: "+971 50 297 7603", e164: "+971502977603" },
-    secondary: { display: "+971 50 912 4500", e164: "+971509124500" },
   },
   // Assumed to be the primary mobile number. Confirm with the business.
   whatsapp: { display: "+971 50 297 7603", number: "971502977603" },
-  email: "info@alnaveedac.com",
+  email: "info@acmaintenancedubai.ae",
 
   address: {
     line1: "Shop 2, Ayesha Mohammed Belhool Building",

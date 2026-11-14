@@ -32,7 +32,7 @@ const OFFLINE_REPLY = `I can't reach the assistant service right now. For help, 
 
 /** Turns [label](/internal-path) and the business phone numbers into links. Nothing else is interpreted. */
 function renderText(text: string, onNavigate: () => void): ReactNode[] {
-  const phones = [site.phone.primary, site.phone.secondary];
+  const phones = [site.phone.primary];
   const pattern = new RegExp(
     `\\[([^\\]\\n]{1,80})\\]\\((\\/[a-z0-9\\-\\/?=&%]{0,120})\\)|(${phones
       .map((p) => p.display.replace(/[+]/g, "\\+"))

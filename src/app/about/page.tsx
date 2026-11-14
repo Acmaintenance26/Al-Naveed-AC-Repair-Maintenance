@@ -47,15 +47,9 @@ export default function AboutPage() {
     ["Opening hours", site.hours.summary],
     [
       "Phone",
-      <>
-        <a href={telHref()} className="link tabular">
-          {site.phone.primary.display}
-        </a>
-        <br />
-        <a href={telHref(site.phone.secondary.e164)} className="link tabular">
-          {site.phone.secondary.display}
-        </a>
-      </>,
+      <a key="phone" href={telHref()} className="link tabular">
+        {site.phone.primary.display}
+      </a>,
     ],
     [
       "Email",
