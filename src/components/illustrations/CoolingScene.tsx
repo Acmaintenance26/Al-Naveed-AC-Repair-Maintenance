@@ -11,7 +11,7 @@ const flows = [-3, -2, -1, 0, 1, 2, 3].map((i) => {
 /**
  * Hero visual. A wall-mounted unit pushes cool air into the room while the thermostat
  * reading falls from 31° to 24°. If a real photo is set in content/media.ts it replaces
- * the drawing and the thermostat card stays on top.
+ * the drawing and the thermostat card, which would read as a fake measurement over a real photo.
  */
 export function CoolingScene() {
   const photo = media.hero;
@@ -61,7 +61,8 @@ export function CoolingScene() {
         </svg>
       )}
 
-      {/* Thermostat */}
+      {/* Thermostat (drawing only) */}
+      {!photo && (
       <div className="absolute bottom-5 right-5 w-[12.25rem] rounded-lg bg-white p-5 text-navy shadow-[0_18px_40px_-16px_rgb(0_0_0/0.55)] xs:w-[13.25rem]">
         <p className="t-label text-slate">Room temperature</p>
         <p className="mt-2 flex items-start font-bold leading-none tracking-[-0.04em]">
@@ -76,6 +77,7 @@ export function CoolingScene() {
           Cooling
         </p>
       </div>
+      )}
     </div>
   );
 }

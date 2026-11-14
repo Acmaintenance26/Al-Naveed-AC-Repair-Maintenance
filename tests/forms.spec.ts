@@ -1,5 +1,9 @@
 import { expect, test, type Page } from "@playwright/test";
 
+// Several tests read the mock webhook's "last delivery", which is one shared slot, so
+// they must not overlap with each other.
+test.describe.configure({ mode: "serial" });
+
 let counter = 0;
 /** Gives each test its own address so the rate limiter treats them separately. */
 const uniqueIp = () => `203.0.113.${(Date.now() + counter++) % 250}`;

@@ -61,13 +61,23 @@ for (const path of ALL_PAGES) {
     expect(blocks.length).toBeGreaterThan(0);
     for (const block of blocks) expect(() => JSON.parse(block)).not.toThrow();
 
-    // Images load and carry alt text.
+    // Images load and carry alt text. Below-the-fold photos are lazy-loaded, so force
+    // them to load before checking.
     const images = await page.locator("img").evaluateAll((imgs) =>
-      (imgs as HTMLImageElement[]).map((i) => ({
-        src: i.currentSrc || i.src,
-        ok: i.complete && i.naturalWidth > 0,
-        alt: i.getAttribute("alt"),
-      })),
+      Promise.all(
+        (imgs as HTMLImageElement[]).map(async (i) => {
+          i.loading = "eager";
+          await Promise.race([
+            i.decode().catch(() => undefined),
+            new Promise((resolve) => setTimeout(resolve, 10_000)),
+          ]);
+          return {
+            src: i.currentSrc || i.src,
+            ok: i.complete && i.naturalWidth > 0,
+            alt: i.getAttribute("alt"),
+          };
+        }),
+      ),
     );
     for (const img of images) {
       expect(img.ok, `broken image ${img.src}`).toBe(true);

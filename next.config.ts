@@ -32,7 +32,13 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
-  images: { formats: ["image/avif", "image/webp"] },
+  images: {
+    formats: ["image/avif", "image/webp"],
+    // The largest image container on the site is ~40rem (about 640px). The default
+    // deviceSizes go up to 3840, which would upscale our ~800px source photos far
+    // past their real resolution for no visual gain and a slower request.
+    deviceSizes: [640, 750, 828, 1080, 1200],
+  },
   turbopack: {
     rules: {
       "*.css": {
