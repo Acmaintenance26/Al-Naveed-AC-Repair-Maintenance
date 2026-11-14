@@ -58,12 +58,29 @@ Supply any of these and they can be added. They would strengthen the site consid
 
 ## 5. Blog articles awaiting approval
 
-Four articles are written and hidden. Each needs to be read by someone who does the work, corrected where it differs from your practice, and then published by changing one word. Instructions are in `docs/CONTENT-GUIDE.md`.
+Nineteen articles are written and hidden. Each needs to be read by someone who does the work, corrected where it differs from your practice, and then published by changing one word. Instructions are in `docs/CONTENT-GUIDE.md`.
 
 1. AC not cooling? Six safe checks before you call a technician
 2. Why is my AC leaking water? Causes and what to do first
 3. How often should you service your AC in Dubai?
 4. AC gas refilling: when it is needed and when it is not
+5. AC freezing up in Dubai: causes, warning signs and solutions
+6. How to reduce your AC electricity bill in Dubai
+7. How to clean an AC filter the right way (and why it matters)
+8. Seven signs your AC needs professional attention, not just a clean
+9. Split AC or central AC: what Dubai homes and offices actually use
+10. Why is my AC making a strange noise? What the sounds mean
+11. AC coil cleaning: why a dirty coil costs you cooling and money
+12. Getting your AC ready for a Dubai summer: a pre-season checklist
+13. Thermostat problems that make a healthy AC act like a broken one
+14. Does your building need duct cleaning? Signs to look for
+15. Why does my AC smell bad? Common causes of AC odours
+16. What counts as an AC emergency in Dubai, and what can wait until morning
+17. Installing a new AC: what happens and what to ask your installer
+18. What affects the cost of AC repair in Dubai (no prices stated — general factors only)
+19. Are annual AC maintenance contracts worth it for Dubai homes and businesses?
+
+Articles 5–19 were drafted in November 2026 and have not yet been read by anyone at Al Naveed. Before publishing any of them, check each one against how your team actually works, the same as 1–4.
 
 Until one is published, the Guides link does not appear in the navigation and `/blog` is not listed in the sitemap.
 

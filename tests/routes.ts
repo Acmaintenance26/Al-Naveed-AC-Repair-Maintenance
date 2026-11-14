@@ -28,6 +28,21 @@ export const POSTS = [
   "why-is-my-ac-leaking-water",
   "how-often-to-service-ac-in-dubai",
   "ac-gas-refilling-when-is-it-needed",
+  "ac-freezing-up-causes-and-fixes",
+  "reduce-ac-electricity-bill-dubai",
+  "how-to-clean-ac-filters-properly",
+  "signs-ac-needs-professional-attention",
+  "split-ac-vs-central-ac-dubai",
+  "why-is-my-ac-making-noise",
+  "ac-coil-cleaning-benefits",
+  "prepare-ac-for-dubai-summer",
+  "thermostat-problems-affecting-ac",
+  "does-your-building-need-duct-cleaning",
+  "why-does-my-ac-smell-bad",
+  "what-counts-as-an-ac-emergency",
+  "installing-a-new-ac-what-to-expect",
+  "what-affects-ac-repair-cost",
+  "are-ac-maintenance-contracts-worth-it",
 ];
 
 /** Pages that should be indexable. */
