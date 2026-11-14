@@ -6,7 +6,7 @@ Tested 13 November 2026 against the production build running locally. Browser: C
 
 | Check | Result |
 | --- | --- |
-| Automated tests | **131 of 131 pass** |
+| Automated tests | **134 of 134 pass** |
 | ESLint | No errors or warnings |
 | TypeScript | No errors |
 | Production build | Succeeds. Every page prerendered |
@@ -20,7 +20,7 @@ These could not be tested from the build environment. They are the gaps to close
 
 | Item | Why | What was done instead |
 | --- | --- | --- |
-| Delivery of a form to a real inbox | No email or webhook account exists yet | The real delivery code was run against a local mock webhook, and the payload was checked |
+| Delivery of a form to a real inbox (`info@acmaintenancedubai.ae`) | No Resend API key exists yet, so no email has been sent anywhere | The real email code was run against a local stand-in for Resend: the request, key header, recipient, sender, subject and body were checked, and a refusal by the provider was shown to the visitor as "not sent" |
 | The assistant answering through the live Anthropic API | No API key was supplied, and none was used | The real code path was run against a local stand-in for the API: streaming, request parameters and failure handling were checked |
 | Deployment | Not authorised and no host chosen | Production build served locally |
 | Real phones | No physical devices | Chromium at phone viewport sizes with touch enabled |
@@ -30,14 +30,15 @@ These could not be tested from the build environment. They are the gaps to close
 
 ## Automated suite
 
-Run with `npm test`. Eight files in `tests/`.
+Run with `npm test`. Nine files in `tests/`.
 
 | File | Tests | What it proves |
 | --- | --- | --- |
 | `pages.spec.ts` | 32 | Every page returns 200, has one h1, headings in order, a unique title under 70 characters, a unique description of 70 to 165 characters, the correct canonical URL, social tags, valid JSON-LD, working images with alt text, no sideways scroll, no console errors and no failed requests. Drafts are `noindex`, everything else is indexable |
-| `links.spec.ts` | 1 | Crawls all 32 pages. Every internal link resolves, every in-page anchor exists, every phone link is one of the two business numbers, every WhatsApp link goes to the business number with a message, every email link is correct, and the only outside destination is the Google Business Profile |
+| `links.spec.ts` | 1 | Crawls all 32 pages. Every internal link resolves, every in-page anchor exists, every phone link is the business number, every WhatsApp link goes to the business number with a message, every email link is correct, and the only outside destination is the Google Business Profile |
 | `navigation.spec.ts` | 9 | Services menu opens, lists all nine services, navigates, and closes on Escape and outside click. Main links reach their pages. Header and hero buttons point to the right places. Skip link. FAQ opens one answer at a time. Mobile menu opens, navigates and closes. Sticky contact bar is present, tall enough and stays in view. Unknown addresses return 404 |
 | `forms.spec.ts` | 14 | See "Forms" below |
+| `email-delivery.spec.ts` | 3 | Run against a second server with the email path on and Resend's address pointed at a local stand-in. A booking is emailed to `info@acmaintenancedubai.ae` with the right key header, sender, subject and body. A provider refusal returns 502 and the form never claims success. The booking page shows "Request sent" and "not a confirmed booking" |
 | `assistant.spec.ts` | 11 | See "AI assistant" below |
 | `seo.spec.ts` | 11 | Sitemap lists exactly the indexable pages. Robots file. Business markup holds only verified facts and no rating. Service, area and article markup. FAQ markup matches the visible questions. Rating is shown with source and date. Name, address and phone are consistent. Security headers. Old addresses redirect. Pages render fully without JavaScript. No secret or server-only text in browser JavaScript |
 | `responsive.spec.ts` | 21 | Seven viewports, three tests each |

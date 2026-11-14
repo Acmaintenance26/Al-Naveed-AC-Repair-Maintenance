@@ -6,7 +6,7 @@ What the business needs to confirm, supply or decide before the site goes live. 
 
 | # | Item | Why | Where it goes |
 | --- | --- | --- | --- |
-| 1 | **Connect the forms** to an inbox or webhook | Until then every submission ends with "Your request was not sent" and a WhatsApp fallback. No lead reaches you by form | `ENQUIRY_WEBHOOK_URL`, or `RESEND_API_KEY` with `ENQUIRY_TO_EMAIL` and `ENQUIRY_FROM_EMAIL`. See `docs/DEPLOYMENT.md` |
+| 1 | **Add the Resend API key** so the forms can email `info@acmaintenancedubai.ae` (the code is done; only the secret key and a verified sender are missing) | Until then every submission ends with "Your request was not sent" and a WhatsApp fallback. No lead reaches you by form | `RESEND_API_KEY` in Vercel, plus a verified sender domain or Resend's test sender. See `docs/DEPLOYMENT.md`, "Connecting the forms" |
 | 2 | **Send one real test enquiry** after connecting | Delivery was tested against a local mock only | Live site |
 | 3 | **Confirm the WhatsApp number** | The site assumes +971 50 297 7603 is on WhatsApp | `src/lib/site.ts`, `whatsapp` |
 | 4 | **Confirm the address wording** | Google shows "28C St, Naif, Deira". Your website shows "Shop # 2, Ayesha Mohammed Belhool Building". Another listing names "Hossain Building". The site combines the first two | `src/lib/site.ts`, `address` |

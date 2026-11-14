@@ -70,7 +70,8 @@ Copy `.env.example` to `.env.local`. Nothing secret is committed, and `.env.loca
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, structured data | Defaults to `https://www.alnaveedac.com` |
 | `ENQUIRY_WEBHOOK_URL` | Delivering form submissions to a webhook | See below |
-| `RESEND_API_KEY`, `ENQUIRY_TO_EMAIL`, `ENQUIRY_FROM_EMAIL` | Delivering form submissions by email | See below |
+| `RESEND_API_KEY` | Emailing form submissions to `info@acmaintenancedubai.ae` | See below |
+| `ENQUIRY_TO_EMAIL`, `ENQUIRY_FROM_EMAIL` | Optional: change the recipient or the sender | Recipient defaults to `info@acmaintenancedubai.ae`, sender to `Website <website@acmaintenancedubai.ae>` |
 | `ENQUIRY_DELIVERY=log` | Local development only: accept the form and print a masked line | Ignored in production |
 | `ANTHROPIC_API_KEY` | AI answers in the assistant | Assistant answers from its built-in guide |
 | `ANTHROPIC_MODEL` | Choosing a different Claude model | Uses `claude-opus-5-5` |

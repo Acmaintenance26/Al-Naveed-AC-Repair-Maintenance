@@ -57,8 +57,10 @@ Netlify, Render, Railway, AWS Amplify and Cloudflare all run Next.js. Check that
 | Variable | Set it? | Value |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Yes | The final address, for example `https://www.alnaveedac.com`. No trailing slash. Must be set **before the build**: it is baked into canonical URLs and the sitemap |
-| `ENQUIRY_WEBHOOK_URL` | One delivery method is required | See "Connecting the forms" |
-| `RESEND_API_KEY`, `ENQUIRY_TO_EMAIL`, `ENQUIRY_FROM_EMAIL` | Alternative to the webhook | See "Connecting the forms" |
+| `RESEND_API_KEY` | **Yes, to switch the forms on** | Your Resend API key. Submissions are then emailed to `info@acmaintenancedubai.ae`. See "Connecting the forms" |
+| `ENQUIRY_FROM_EMAIL` | Optional | Defaults to `Website <website@acmaintenancedubai.ae>`, which needs that domain verified in Resend |
+| `ENQUIRY_TO_EMAIL` | Optional | Defaults to `info@acmaintenancedubai.ae` (the email in `src/lib/site.ts`) |
+| `ENQUIRY_WEBHOOK_URL` | Optional alternative | Sends to a webhook instead of email. Wins if both are set |
 | `ANTHROPIC_API_KEY` | Optional | Enables AI answers in the assistant |
 | `ANTHROPIC_MODEL` | Optional | Defaults to `claude-opus-5-5` |
 | `SHOW_DRAFT_POSTS` | **No** | Leave unset. Setting it publishes unapproved articles |
@@ -68,18 +70,21 @@ Never commit real values. Never prefix a key with `NEXT_PUBLIC_`.
 
 ## Connecting the forms
 
-Without one of these, the forms tell visitors the request was not sent.
+Until `RESEND_API_KEY` (or a webhook) is set on the server, the forms tell visitors "Your request was not sent" and offer WhatsApp. The code is already wired up: every contact, booking and service-page enquiry form goes through the same route, which emails `info@acmaintenancedubai.ae`. The only missing piece is the key, which is a secret and so is not in the repository.
 
-### Email through Resend
+### Email through Resend (recommended)
 
-1. Create an account at resend.com and verify the `alnaveedac.com` domain by adding the DNS records it gives you.
-2. Create an API key.
-3. Set:
-   - `RESEND_API_KEY` to the key
-   - `ENQUIRY_TO_EMAIL` to the inbox that should receive enquiries
-   - `ENQUIRY_FROM_EMAIL` to a sender on the verified domain, for example `Website <website@alnaveedac.com>`
+1. Create an account at resend.com. Registering it with `info@acmaintenancedubai.ae` lets you test straight away (step 3, quick start).
+2. Create an API key under API Keys ("Sending access" is enough).
+3. Choose the sender:
+   - **Quick start:** set `ENQUIRY_FROM_EMAIL` to `Website <onboarding@resend.dev>`. Resend's test sender can only deliver to the email address the Resend account was registered with, so this works only if the account was registered with `info@acmaintenancedubai.ae`. Move to the production option before launch.
+   - **Production:** under Domains in Resend, add `acmaintenancedubai.ae` and create the DNS records it shows (at whoever manages that domain's DNS). Once it shows Verified, leave `ENQUIRY_FROM_EMAIL` unset: the default `Website <website@acmaintenancedubai.ae>` is used.
+4. In Vercel, open the project, Settings, Environment Variables, and add `RESEND_API_KEY` for Production (mark it Sensitive). Add `ENQUIRY_FROM_EMAIL` too if you chose the quick start.
+5. Redeploy (Deployments, the latest one, Redeploy). Environment variable changes apply only to new deployments.
 
-Each submission arrives as a plain-text email with the name, phone, service, location and message.
+Each submission arrives as a plain-text email with the name, phone, service, location and message. Replying to it does not reach the customer, because the form collects a phone number and not an email address: call or WhatsApp them.
+
+If Resend refuses a message (for example the sender domain is not verified), the visitor sees the "not sent" message with the WhatsApp fallback, never a false success, and the server log shows a line starting `[enquiry] Resend refused the email` with Resend's reason. In Vercel that is under the deployment's Logs.
 
 ### Webhook
 
@@ -105,7 +110,7 @@ If both methods are set, the webhook is used.
 
 ### Then test it
 
-Submit the form on the live site and confirm the message arrives. This has not been done: delivery was verified against a local mock only.
+Submit the booking form on the live site and confirm the email arrives at `info@acmaintenancedubai.ae` (check spam the first time). This has not been done: delivery was verified against a local stand-in for Resend only, because no API key exists yet.
 
 ## Enabling the AI assistant
 
