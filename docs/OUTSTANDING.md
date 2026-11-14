@@ -53,7 +53,7 @@ Supply any of these and they can be added. They would strengthen the site consid
 | Asset | Now | Wanted |
 | --- | --- | --- |
 | Logo | A simple placeholder mark and wordmark | Your real logo, as SVG or a large PNG |
-| Photographs | Real photos supplied by the business are in place for all four slots (hero, residential, commercial, about) in `src/content/media.ts`. The source files are phone/WhatsApp quality (around 800px on the long edge), not the 1600px recommended for a crisp large display | Higher-resolution originals of the same shots, or a van and a finished-installation photo for variety |
+| Photographs | Real photos supplied by the business are in place for the residential, commercial, about and technician slots in `src/content/media.ts`. The hero deliberately keeps the drawn cooling scene. The source files are phone/WhatsApp quality (around 800px on the long edge), not the 1600px recommended for a crisp large display | Higher-resolution originals of the same shots, or a van and a finished-installation photo for variety |
 | Customer reviews | A link to Google | Nothing needed. If you later want reviews shown on the site, use Google's own reviews widget or obtain each reviewer's written permission |
 
 ## 5. Blog articles awaiting approval

@@ -125,6 +125,17 @@ export default function AboutPage() {
               ))}
             </ol>
 
+            {media.technician && (
+              <Image
+                src={media.technician.src}
+                alt={media.technician.alt}
+                width={media.technician.width}
+                height={media.technician.height}
+                sizes="(min-width: 1024px) 40rem, 92vw"
+                className="mt-10 aspect-[4/3] w-full rounded-lg object-cover object-top"
+              />
+            )}
+
             <h2 className="t-h2 mt-16">Our services</h2>
             <ul className="mt-7 grid gap-x-10 gap-y-3 sm:grid-cols-2">
               {services.map((s) => (

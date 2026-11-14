@@ -16,10 +16,12 @@ export type Photo = {
   height: number;
 };
 
-export type MediaSlot = "hero" | "residential" | "commercial" | "about";
+export type MediaSlot = "hero" | "residential" | "commercial" | "about" | "technician";
 
 export const media: Record<MediaSlot, Photo | null> = {
-  hero: {
+  // The hero keeps the drawn cooling scene.
+  hero: null,
+  technician: {
     src: "/images/technician-rooftop-condenser-units.jpg",
     alt: "Al Naveed AC technician servicing outdoor condenser units on a Dubai rooftop",
     width: 800,
