@@ -1,8 +1,9 @@
 import { BookOpen, Droplets, Gauge, Sun, Wrench } from "lucide-react";
 import { AirLines } from "@/components/illustrations/Scenes";
 import type { PostCategory } from "@/content/posts";
+import { postIcons } from "@/content/postIcons";
 
-const icons: Record<PostCategory, typeof Wrench> = {
+const categoryIcons: Record<PostCategory, typeof Wrench> = {
   "AC Repair Tips": Wrench,
   "AC Maintenance": Gauge,
   "Air Conditioning Problems": Droplets,
@@ -10,9 +11,21 @@ const icons: Record<PostCategory, typeof Wrench> = {
   "Dubai AC Advice": Sun,
 };
 
-/** Drawn cover used as an article's featured image until real photography is supplied. */
-export function PostCover({ category, className = "" }: { category: PostCategory; className?: string }) {
-  const Icon = icons[category];
+/**
+ * Drawn cover used as an article's featured image until real photography is supplied.
+ * Pass `slug` so a topic-specific icon from `postIcons` is used when one exists; otherwise
+ * falls back to a generic icon for the article's category.
+ */
+export function PostCover({
+  category,
+  slug,
+  className = "",
+}: {
+  category: PostCategory;
+  slug?: string;
+  className?: string;
+}) {
+  const Icon = (slug && postIcons[slug]) || categoryIcons[category];
   return (
     <div
       className={`relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-lg bg-navy ${className}`}

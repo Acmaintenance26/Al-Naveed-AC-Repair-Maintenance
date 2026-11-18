@@ -150,7 +150,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
                 <DraftNotice />
               </div>
             )}
-            <PostCover category={post.category} className="mb-10" />
+            <PostCover category={post.category} slug={post.slug} className="mb-10" />
             <div className="prose text-[1.0938rem] leading-[1.7]">
               {post.blocks.map((b, i) => (
                 <Block key={i} block={b} />

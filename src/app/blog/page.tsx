@@ -58,7 +58,7 @@ export default function BlogPage() {
               {visiblePosts.map((post) => (
                 <li key={post.slug}>
                   <article className="group relative">
-                    <PostCover category={post.category} />
+                    <PostCover category={post.category} slug={post.slug} />
                     <p className="t-label mt-6 text-blue">{post.category}</p>
                     <h2 className="mt-2 text-[1.5rem] leading-tight tracking-[-0.02em]">
                       <Link
