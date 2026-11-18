@@ -23,11 +23,16 @@ export const AREAS = [
   "palm-jumeirah",
 ];
 
-export const POSTS = [
+/** Still status: "draft" in src/content/posts.ts — hidden, noindex, awaiting approval. */
+export const DRAFT_POSTS = [
   "ac-not-cooling-checks-before-calling-technician",
   "why-is-my-ac-leaking-water",
   "how-often-to-service-ac-in-dubai",
   "ac-gas-refilling-when-is-it-needed",
+];
+
+/** status: "published" in src/content/posts.ts — live, indexable, in the sitemap. */
+export const PUBLISHED_POSTS = [
   "ac-freezing-up-causes-and-fixes",
   "reduce-ac-electricity-bill-dubai",
   "how-to-clean-ac-filters-properly",
@@ -45,6 +50,8 @@ export const POSTS = [
   "are-ac-maintenance-contracts-worth-it",
 ];
 
+export const POSTS = [...DRAFT_POSTS, ...PUBLISHED_POSTS];
+
 /** Pages that should be indexable. */
 export const INDEXABLE = [
   "/",
@@ -57,10 +64,12 @@ export const INDEXABLE = [
   "/book",
   "/privacy-policy",
   "/terms",
+  "/blog",
+  ...PUBLISHED_POSTS.map((p) => `/blog/${p}`),
 ];
 
 /** Draft content: visible in preview, never indexable. */
-export const DRAFTS = ["/blog", ...POSTS.map((p) => `/blog/${p}`)];
+export const DRAFTS = DRAFT_POSTS.map((p) => `/blog/${p}`);
 
 export const ALL_PAGES = [...INDEXABLE, ...DRAFTS];
 

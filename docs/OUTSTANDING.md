@@ -56,14 +56,10 @@ Supply any of these and they can be added. They would strengthen the site consid
 | Photographs | Real photos supplied by the business are in place for the residential, commercial, about and technician slots in `src/content/media.ts`. The hero deliberately keeps the drawn cooling scene. The source files are phone/WhatsApp quality (around 800px on the long edge), not the 1600px recommended for a crisp large display | Higher-resolution originals of the same shots, or a van and a finished-installation photo for variety |
 | Customer reviews | A link to Google | Nothing needed. If you later want reviews shown on the site, use Google's own reviews widget or obtain each reviewer's written permission |
 
-## 5. Blog articles awaiting approval
+## 5. Blog articles
 
-Nineteen articles are written and hidden. Each needs to be read by someone who does the work, corrected where it differs from your practice, and then published by changing one word. Instructions are in `docs/CONTENT-GUIDE.md`.
+**15 articles were published on 18 November 2026 at the owner's instruction, without a technician reading them first.** This skipped the normal step in `docs/CONTENT-GUIDE.md` (have someone who does the work read each article and correct anything that does not match your practice). They contain no invented prices, years in business, licence numbers, brand names or guarantees, but the *procedures and general claims* in them (how to clean a filter, what a service includes, how systems differ, and so on) have not been checked against how Al Naveed actually works. Please read these live articles when you have a chance, and tell us what to fix if anything is wrong:
 
-1. AC not cooling? Six safe checks before you call a technician
-2. Why is my AC leaking water? Causes and what to do first
-3. How often should you service your AC in Dubai?
-4. AC gas refilling: when it is needed and when it is not
 5. AC freezing up in Dubai: causes, warning signs and solutions
 6. How to reduce your AC electricity bill in Dubai
 7. How to clean an AC filter the right way (and why it matters)
@@ -80,9 +76,14 @@ Nineteen articles are written and hidden. Each needs to be read by someone who d
 18. What affects the cost of AC repair in Dubai (no prices stated — general factors only)
 19. Are annual AC maintenance contracts worth it for Dubai homes and businesses?
 
-Articles 5–19 were drafted in November 2026 and have not yet been read by anyone at Al Naveed. Before publishing any of them, check each one against how your team actually works, the same as 1–4.
+Four earlier articles are still drafts, awaiting the normal review before anyone publishes them:
 
-Until one is published, the Guides link does not appear in the navigation and `/blog` is not listed in the sitemap.
+1. AC not cooling? Six safe checks before you call a technician
+2. Why is my AC leaking water? Causes and what to do first
+3. How often should you service your AC in Dubai?
+4. AC gas refilling: when it is needed and when it is not
+
+Until one is published, the Guides link does not appear in the navigation and `/blog` is not listed in the sitemap — this is now untrue for the 15 above, which do appear, since they are published.
 
 ## 6. Area page facts worth a second look
 

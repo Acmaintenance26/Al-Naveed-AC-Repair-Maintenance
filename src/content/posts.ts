@@ -372,8 +372,8 @@ const allPosts: Post[] = [
     description:
       "Why air conditioners ice up even in Dubai's heat, the usual causes, and what to do safely before a technician looks at it.",
     category: "Air Conditioning Problems",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-repair-dubai", "ac-coil-cleaning-dubai", "ac-servicing-dubai"],
     blocks: [
@@ -493,8 +493,8 @@ const allPosts: Post[] = [
     description:
       "Where AC electricity use actually goes in a Dubai home, and the changes to settings, habits and upkeep that make the biggest difference.",
     category: "Dubai AC Advice",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-maintenance-dubai", "ac-servicing-dubai"],
     blocks: [
@@ -581,8 +581,8 @@ const allPosts: Post[] = [
     description:
       "A step-by-step guide to cleaning split and ducted AC filters properly, how often to do it, and the signs a filter needs more than a rinse.",
     category: "AC Maintenance",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-servicing-dubai", "ac-maintenance-dubai"],
     blocks: [
@@ -684,8 +684,8 @@ const allPosts: Post[] = [
     description:
       "Seven signs that go beyond a dirty filter and point to a fault only a technician can diagnose, with what each one usually means.",
     category: "AC Repair Tips",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-repair-dubai", "emergency-ac-repair-dubai"],
     blocks: [
@@ -769,8 +769,8 @@ const allPosts: Post[] = [
     description:
       "How split units, ducted systems and district cooling fan coil units differ, which Dubai properties tend to have each, and how upkeep differs between them.",
     category: "HVAC Guides",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-installation-dubai", "hvac-duct-cleaning-dubai"],
     blocks: [
@@ -850,8 +850,8 @@ const allPosts: Post[] = [
     description:
       "A plain guide to the clicks, buzzes, hisses and bangs an air conditioner can make, what usually causes each one, and which sounds mean switch it off now.",
     category: "Air Conditioning Problems",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-repair-dubai", "emergency-ac-repair-dubai"],
     blocks: [
@@ -950,8 +950,8 @@ const allPosts: Post[] = [
     description:
       "How a dusty evaporator or condenser coil quietly reduces cooling and raises electricity use, the signs to watch for, and why coils need careful cleaning.",
     category: "AC Maintenance",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-coil-cleaning-dubai", "ac-servicing-dubai"],
     blocks: [
@@ -1044,8 +1044,8 @@ const allPosts: Post[] = [
     description:
       "A practical checklist for getting an air conditioner ready before the Dubai heat arrives, covering what you can check yourself and what needs a technician.",
     category: "Dubai AC Advice",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-servicing-dubai", "ac-maintenance-dubai"],
     blocks: [
@@ -1138,8 +1138,8 @@ const allPosts: Post[] = [
     description:
       "How a faulty or badly placed thermostat can make a perfectly good air conditioner seem broken, and how to tell the thermostat and the AC itself apart.",
     category: "HVAC Guides",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["thermostat-repair-dubai", "ac-repair-dubai"],
     blocks: [
@@ -1222,8 +1222,8 @@ const allPosts: Post[] = [
     description:
       "Signs that the ductwork behind a ducted or central air conditioning system has built up dust and debris, and when duct cleaning is worth booking.",
     category: "HVAC Guides",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["hvac-duct-cleaning-dubai", "ac-servicing-dubai"],
     blocks: [
@@ -1310,8 +1310,8 @@ const allPosts: Post[] = [
     description:
       "Musty, burning, sewage or dusty smells from an air conditioner each point to a different cause. What each smell usually means and what to do about it.",
     category: "Air Conditioning Problems",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-coil-cleaning-dubai", "ac-servicing-dubai"],
     blocks: [
@@ -1440,8 +1440,8 @@ const allPosts: Post[] = [
     description:
       "Not every AC fault needs a call at 2am. A guide to telling a genuine AC emergency in Dubai apart from something safe to leave until daylight.",
     category: "Dubai AC Advice",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["emergency-ac-repair-dubai", "ac-repair-dubai"],
     blocks: [
@@ -1571,8 +1571,8 @@ const allPosts: Post[] = [
     description:
       "What actually happens during an AC installation in Dubai, from site check to commissioning, and the questions worth asking your installer before work starts.",
     category: "HVAC Guides",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-installation-dubai"],
     blocks: [
@@ -1693,8 +1693,8 @@ const allPosts: Post[] = [
     description:
       "AC repair costs vary by fault, not by a fixed price list. The main factors that make one repair more involved than another, explained plainly.",
     category: "AC Repair Tips",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-repair-dubai", "emergency-ac-repair-dubai"],
     blocks: [
@@ -1807,8 +1807,8 @@ const allPosts: Post[] = [
     description:
       "What an annual AC maintenance contract actually changes compared with booking services as needed, and who in Dubai tends to benefit most from one.",
     category: "AC Maintenance",
-    status: "draft",
-    publishedAt: "2026-11-14",
+    status: "published",
+    publishedAt: "2026-11-18",
     author: AUTHOR,
     relatedServices: ["ac-maintenance-dubai", "ac-servicing-dubai"],
     blocks: [
