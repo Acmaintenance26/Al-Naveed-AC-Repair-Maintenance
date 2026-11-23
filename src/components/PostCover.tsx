@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { BookOpen, Droplets, Gauge, Sun, Wrench } from "lucide-react";
 import { AirLines } from "@/components/illustrations/Scenes";
 import type { PostCategory } from "@/content/posts";
+import { postPhotos } from "@/content/media";
 import { postIcons } from "@/content/postIcons";
 
 const categoryIcons: Record<PostCategory, typeof Wrench> = {
@@ -25,6 +27,21 @@ export function PostCover({
   slug?: string;
   className?: string;
 }) {
+  const photo = slug ? postPhotos[slug] : undefined;
+  if (photo) {
+    return (
+      <div className={`relative aspect-[16/9] overflow-hidden rounded-lg bg-navy ${className}`}>
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          width={photo.width}
+          height={photo.height}
+          sizes="(min-width: 1024px) 704px, 100vw"
+          className="size-full object-cover"
+        />
+      </div>
+    );
+  }
   const Icon = (slug && postIcons[slug]) || categoryIcons[category];
   return (
     <div

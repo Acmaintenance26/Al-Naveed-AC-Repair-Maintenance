@@ -17,6 +17,7 @@ import {
   visiblePosts,
   type PostBlock,
 } from "@/content/posts";
+import { postPhotos } from "@/content/media";
 import { getService, servicePath } from "@/content/services";
 import { articleSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
@@ -31,7 +32,9 @@ export function generateStaticParams() {
     : [{ slug: PLACEHOLDER }];
 }
 
-export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return { robots: { index: false, follow: false } };
@@ -44,6 +47,14 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
     type: "article",
     publishedTime: post.publishedAt,
     noindex: post.status !== "published",
+    image: postPhotos[post.slug]
+      ? {
+          url: postPhotos[post.slug].src,
+          width: postPhotos[post.slug].width,
+          height: postPhotos[post.slug].height,
+          alt: postPhotos[post.slug].alt,
+        }
+      : undefined,
   });
 }
 
@@ -72,7 +83,11 @@ function Block({ block }: { block: PostBlock }) {
     case "callout":
       return (
         <aside className="flex gap-4 rounded-lg border-l-4 border-blue bg-mist p-6">
-          <Info size={22} aria-hidden="true" className="mt-0.5 shrink-0 text-blue" />
+          <Info
+            size={22}
+            aria-hidden="true"
+            className="mt-0.5 shrink-0 text-blue"
+          />
           <div>
             <p className="font-bold text-navy">{block.title}</p>
             <p className="mt-1.5">{block.text}</p>
@@ -88,7 +103,9 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
   if (!post) notFound();
 
   const headings = postHeadings(post);
-  const related = post.relatedServices.map(getService).filter((s) => s !== undefined);
+  const related = post.relatedServices
+    .map(getService)
+    .filter((s) => s !== undefined);
   const others = visiblePosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
@@ -109,12 +126,16 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           <div className="flex gap-2">
             <dt className="text-white/60">Published</dt>
             <dd className="font-semibold text-white">
-              <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt)}</time>
+              <time dateTime={post.publishedAt}>
+                {formatPostDate(post.publishedAt)}
+              </time>
             </dd>
           </div>
           <div className="flex gap-2">
             <dt className="text-white/60">Reading time</dt>
-            <dd className="font-semibold text-white">{readingMinutes(post)} minutes</dd>
+            <dd className="font-semibold text-white">
+              {readingMinutes(post)} minutes
+            </dd>
           </div>
           <div className="flex gap-2">
             <dt className="text-white/60">Category</dt>
@@ -127,14 +148,20 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
         <div className="shell grid gap-12 lg:grid-cols-[16rem_1fr] lg:gap-20">
           <aside className="lg:sticky lg:top-28 lg:self-start">
             {headings.length >= 3 && (
-              <nav aria-labelledby="toc-heading" className="rounded-lg bg-mist p-6">
+              <nav
+                aria-labelledby="toc-heading"
+                className="rounded-lg bg-mist p-6"
+              >
                 <h2 id="toc-heading" className="t-label text-navy">
                   In this article
                 </h2>
                 <ol className="mt-4 grid gap-2.5 text-[0.9375rem]">
                   {headings.map((h) => (
                     <li key={h.id}>
-                      <a href={`#${h.id}`} className="text-ink transition-colors hover:text-blue">
+                      <a
+                        href={`#${h.id}`}
+                        className="text-ink transition-colors hover:text-blue"
+                      >
                         {h.text}
                       </a>
                     </li>
@@ -150,25 +177,49 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
                 <DraftNotice />
               </div>
             )}
-            <PostCover category={post.category} slug={post.slug} className="mb-10" />
+            <PostCover
+              category={post.category}
+              slug={post.slug}
+              className="mb-10"
+            />
             <div className="prose text-[1.0938rem] leading-[1.7]">
               {post.blocks.map((b, i) => (
                 <Block key={i} block={b} />
               ))}
             </div>
 
-            <section className="mt-14 border-t border-line pt-10" aria-labelledby="related-services">
-              <h2 id="related-services" className="text-[1.375rem] tracking-[-0.02em]">
+            <section
+              className="mt-14 border-t border-line pt-10"
+              aria-labelledby="related-services"
+            >
+              <h2
+                id="related-services"
+                className="text-[1.375rem] tracking-[-0.02em]"
+              >
                 Services mentioned in this guide
               </h2>
               <ul className="mt-5">
                 {related.map((s) => (
-                  <li key={s.slug} className="border-t border-line last:border-b">
-                    <Link href={servicePath(s.slug)} className="group flex items-start gap-4 py-5">
-                      <ServiceIcon name={s.icon} size={24} className="mt-0.5 shrink-0 text-blue" />
+                  <li
+                    key={s.slug}
+                    className="border-t border-line last:border-b"
+                  >
+                    <Link
+                      href={servicePath(s.slug)}
+                      className="group flex items-start gap-4 py-5"
+                    >
+                      <ServiceIcon
+                        name={s.icon}
+                        size={24}
+                        className="mt-0.5 shrink-0 text-blue"
+                      />
                       <span>
-                        <span className="font-bold text-navy group-hover:text-blue">{s.name}</span>
-                        <span className="t-small mt-1 block text-slate">{s.summary}</span>
+                        <span className="font-bold text-navy group-hover:text-blue">
+                          {s.name}
+                        </span>
+                        <span className="t-small mt-1 block text-slate">
+                          {s.summary}
+                        </span>
                       </span>
                     </Link>
                   </li>

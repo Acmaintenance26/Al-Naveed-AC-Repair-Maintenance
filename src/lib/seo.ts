@@ -12,6 +12,8 @@ type PageMeta = {
   noindex?: boolean;
   type?: "website" | "article";
   publishedTime?: string;
+  /** Sharing image for this page; defaults to the site-wide one. */
+  image?: { url: string; width: number; height: number; alt: string };
 };
 
 /** Consistent title, description, canonical URL and social tags for a page. */
@@ -23,11 +25,12 @@ export function pageMetadata({
   noindex,
   type = "website",
   publishedTime,
+  image: pageImage,
 }: PageMeta): Metadata {
   const url = absoluteUrl(path);
   // Set on every page: page-level Open Graph settings replace the site-wide defaults,
   // which would otherwise drop the sharing image from every page except the homepage.
-  const image = {
+  const image = pageImage ?? {
     url: "/opengraph-image.png",
     width: 1200,
     height: 630,
