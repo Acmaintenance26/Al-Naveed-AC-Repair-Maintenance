@@ -16,9 +16,14 @@ export type Photo = {
   height: number;
   /** Photographer and licence, when the photo needs a credit. */
   credit?: string;
+  /** Caption shown under an area photo, in place of the drawn scene's caption. */
+  caption?: string;
+  /** Name shown before the caption, when the photo shows something other than the drawn scene's landmark. */
+  name?: string;
 };
 
-export type MediaSlot = "hero" | "residential" | "commercial" | "about" | "technician";
+export type MediaSlot =
+  "hero" | "residential" | "commercial" | "about" | "technician";
 
 export const media: Record<MediaSlot, Photo | null> = {
   // The hero keeps the drawn cooling scene.
@@ -154,4 +159,81 @@ export const postPhotos: Record<string, Photo> = {
  * entry here. Use only photos you own or that are licensed for this use, and add the credit
  * if the licence requires one.
  */
-export const areaPhotos: Record<string, Photo> = {};
+export const areaPhotos: Record<string, Photo> = {
+  "business-bay": {
+    src: "/images/areas/business-bay.jpg",
+    alt: "Towers along the Dubai Canal in Business Bay, with Burj Khalifa rising in the distance",
+    width: 1200,
+    height: 803,
+    caption:
+      "Business Bay towers along the Dubai Canal, with Burj Khalifa in the distance.",
+  },
+  naif: {
+    src: "/images/areas/naif.jpg",
+    alt: "Entrance to Naif Market in Deira, with arched walkways, shops and Arabic and English signage",
+    width: 1280,
+    height: 720,
+    name: "Naif Market",
+    caption:
+      "The Naif Market entrance, one of the best-known buildings in Naif.",
+  },
+  "palm-jumeirah": {
+    src: "/images/areas/palm-jumeirah.jpg",
+    alt: "Aerial view of Palm Jumeirah, with the fronds, the trunk and the crescent surrounded by blue sea",
+    width: 820,
+    height: 497,
+    name: "Palm Jumeirah",
+    caption:
+      "Aerial view of the island: the trunk, the fronds and the crescent.",
+  },
+  jumeirah: {
+    src: "/images/areas/jumeirah.jpg",
+    alt: "Burj Al Arab seen from a Jumeirah beach with sand, sea and rows of umbrellas",
+    width: 800,
+    height: 599,
+    caption: "Burj Al Arab seen from the beach at Jumeirah.",
+  },
+  "al-barsha": {
+    src: "/images/areas/al-barsha.jpg",
+    alt: "The indoor snow slope and chairlifts at Ski Dubai inside Mall of the Emirates",
+    width: 1040,
+    height: 580,
+    caption: "The indoor snow slope at Ski Dubai, inside Mall of the Emirates.",
+  },
+  jlt: {
+    src: "/images/areas/jlt.jpg",
+    alt: "Towers around a lake in Jumeirah Lakes Towers, with Almas Tower in the centre",
+    width: 1500,
+    height: 1000,
+    caption: "Towers around a JLT lake, with Almas Tower in the middle.",
+  },
+  jvc: {
+    src: "/images/areas/jvc.jpg",
+    alt: "Aerial view of the circular park and ring of white villas in Jumeirah Village Circle, with towers behind",
+    width: 960,
+    height: 640,
+    caption:
+      "Aerial view of a circle of villas around a park in Jumeirah Village Circle.",
+  },
+  deira: {
+    src: "/images/areas/deira.jpg",
+    alt: "Wooden abra boats and dhows on Dubai Creek in Deira, with old buildings and a minaret behind",
+    width: 1800,
+    height: 1200,
+    caption: "Abras and dhows on Dubai Creek, Deira.",
+  },
+  "downtown-dubai": {
+    src: "/images/areas/downtown-dubai.jpg",
+    alt: "Burj Khalifa rising above the apartment towers and low-rise buildings of Downtown Dubai",
+    width: 1200,
+    height: 901,
+    caption: "Burj Khalifa and the apartment towers of Downtown Dubai.",
+  },
+  "dubai-marina": {
+    src: "/images/areas/dubai-marina.jpg",
+    alt: "Waterfront walkway at Dubai Marina with high-rise towers across the water and cafes on the right",
+    width: 1440,
+    height: 900,
+    caption: "The Marina waterfront walk, with the towers across the water.",
+  },
+};

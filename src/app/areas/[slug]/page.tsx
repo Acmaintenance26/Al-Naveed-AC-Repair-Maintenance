@@ -11,6 +11,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { ButtonLink } from "@/components/ui/Button";
 import { areaPath, areas, areaShortName, getArea } from "@/content/areas";
+import { areaPhotos } from "@/content/media";
 import { getService, servicePath } from "@/content/services";
 import { areaOptions, serviceOptions } from "@/lib/form-options";
 import { areaServiceSchema, faqSchema } from "@/lib/schema";
@@ -21,7 +22,9 @@ export function generateStaticParams() {
   return areas.map((a) => ({ slug: a.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/areas/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const area = getArea(slug);
   if (!area) return {};
@@ -38,7 +41,9 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
   if (!area) notFound();
 
   const short = areaShortName(area);
-  const areaServices = area.services.map(getService).filter((s) => s !== undefined);
+  const areaServices = area.services
+    .map(getService)
+    .filter((s) => s !== undefined);
   const nearby = area.nearby.map(getArea).filter((a) => a !== undefined);
   const message = `Hello Al Naveed AC, I need help with my air conditioner in ${short}.`;
 
@@ -64,10 +69,24 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
                 <AreaImage area={area} priority />
               </div>
               <figcaption className="t-small mt-3 flex gap-2 text-slate">
-                <MapPin size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-blue" />
+                <MapPin
+                  size={16}
+                  aria-hidden="true"
+                  className="mt-0.5 shrink-0 text-blue"
+                />
                 <span>
-                  <span className="font-bold text-navy">{area.landmark.name}.</span>{" "}
-                  {area.landmark.caption}
+                  <span className="font-bold text-navy">
+                    {areaPhotos[area.slug]?.name ?? area.landmark.name}.
+                  </span>{" "}
+                  {areaPhotos[area.slug]
+                    ? [
+                        areaPhotos[area.slug].caption,
+                        areaPhotos[area.slug].credit &&
+                          `Photo: ${areaPhotos[area.slug].credit}`,
+                      ]
+                        .filter(Boolean)
+                        .join(" ")
+                    : area.landmark.caption}
                 </span>
               </figcaption>
             </figure>
@@ -85,7 +104,10 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
             <nav aria-label="On this page" className="mt-10">
               <h2 className="text-[1.0625rem]">On this page</h2>
               <ol className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
-                {[...area.sections, { id: "faq", title: `Questions from ${short}` }].map((s) => (
+                {[
+                  ...area.sections,
+                  { id: "faq", title: `Questions from ${short}` },
+                ].map((s) => (
                   <li key={s.id}>
                     <a href={`#${s.id}`} className="link text-[0.9688rem]">
                       {s.title}
@@ -109,7 +131,9 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
                   <ul className="mt-8 grid gap-x-10 sm:grid-cols-2">
                     {s.items.map((it) => (
                       <li key={it.title} className="border-t border-line py-6">
-                        <h3 className="text-[1.0625rem] leading-snug">{it.title}</h3>
+                        <h3 className="text-[1.0625rem] leading-snug">
+                          {it.title}
+                        </h3>
                         <p className="t-small mt-2 text-slate">{it.text}</p>
                       </li>
                     ))}
@@ -147,12 +171,18 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
           >
             <div className="rounded-lg bg-mist p-2">
               <div className="px-5 pt-5 pb-4">
-                <h2 id="book-heading" className="text-[1.375rem] leading-tight tracking-[-0.02em]">
+                <h2
+                  id="book-heading"
+                  className="text-[1.375rem] leading-tight tracking-[-0.02em]"
+                >
                   Request a visit in {short}
                 </h2>
                 <p className="t-small mt-2 text-slate">
                   {site.hours.summary}. For anything urgent, call{" "}
-                  <a href={telHref()} className="link tabular whitespace-nowrap">
+                  <a
+                    href={telHref()}
+                    className="link tabular whitespace-nowrap"
+                  >
                     {site.phone.primary.display}
                   </a>
                   .
@@ -172,7 +202,9 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
 
       <section className="section bg-mist">
         <div className="shell">
-          <h2 className="t-h2 max-w-[24ch]">Services most often needed in {short}</h2>
+          <h2 className="t-h2 max-w-[24ch]">
+            Services most often needed in {short}
+          </h2>
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {areaServices.map((s) => (
               <li key={s.slug}>
@@ -184,7 +216,9 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
                   <span className="t-h3 mt-5 block font-bold text-navy group-hover:text-blue">
                     {s.name}
                   </span>
-                  <span className="t-small mt-2 block text-slate">{s.summary}</span>
+                  <span className="t-small mt-2 block text-slate">
+                    {s.summary}
+                  </span>
                 </Link>
               </li>
             ))}
@@ -206,7 +240,10 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
                   className="group block overflow-hidden rounded-lg border border-line transition-colors hover:border-blue"
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-navy">
-                    <AreaImage area={n} sizes="(min-width: 1024px) 384px, 100vw" />
+                    <AreaImage
+                      area={n}
+                      sizes="(min-width: 1024px) 384px, 100vw"
+                    />
                   </div>
                   <span className="block p-5 font-bold text-navy group-hover:text-blue">
                     AC repair in {areaShortName(n)}
@@ -218,7 +255,10 @@ export default async function AreaPage({ params }: PageProps<"/areas/[slug]">) {
         </div>
       </section>
 
-      <CtaBand title={`Need AC repair in ${short}?`} whatsappMessage={message} />
+      <CtaBand
+        title={`Need AC repair in ${short}?`}
+        whatsappMessage={message}
+      />
       <JsonLd data={[areaServiceSchema(area), faqSchema(area.faqs)]} />
     </>
   );
