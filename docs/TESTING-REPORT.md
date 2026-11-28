@@ -6,7 +6,7 @@ Tested 13 November 2026 against the production build running locally. Browser: C
 
 | Check | Result |
 | --- | --- |
-| Automated tests | **134 of 134 pass** |
+| Automated tests | **162 of 162 pass** |
 | ESLint | No errors or warnings |
 | TypeScript | No errors |
 | Production build | Succeeds. Every page prerendered |
@@ -30,7 +30,7 @@ These could not be tested from the build environment. They are the gaps to close
 
 ## Automated suite
 
-Run with `npm test`. Nine files in `tests/`.
+Run with `npm test`. Ten files in `tests/`, including `area-content.spec.ts` (word count 1,500–2,000, title and description length, no unconfirmed claims, no repeated paragraphs, valid nearby links for every area).
 
 | File | Tests | What it proves |
 | --- | --- | --- |

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/layout/Header";
 import { WhatsAppIcon } from "@/components/ui/icons";
-import { areas, areaPath, areaShortName } from "@/content/areas";
+import { areas, areaPath, areaShortName, menuAreas } from "@/content/areas";
 import { visiblePosts } from "@/content/posts";
 import { servicePath, services } from "@/content/services";
 import { mailHref, site, telHref, whatsappHref } from "@/lib/site";
@@ -56,13 +56,18 @@ export async function Footer() {
         <nav aria-label="Areas">
           <h2 className={heading}>Areas</h2>
           <ul className="mt-5 grid gap-3">
-            {areas.map((a) => (
+            {menuAreas.map((a) => (
               <li key={a.slug}>
                 <Link href={areaPath(a.slug)} className={item}>
                   {areaShortName(a)}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/areas" className={`${item} font-bold`}>
+                All {areas.length} areas
+              </Link>
+            </li>
           </ul>
         </nav>
 

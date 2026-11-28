@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
+import { AreaImage } from "@/components/AreaImage";
 import { PageHero } from "@/components/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { areaPath, areas, areaShortName } from "@/content/areas";
@@ -38,15 +39,20 @@ export default function AreasPage() {
               <li key={a.slug}>
                 <Link
                   href={areaPath(a.slug)}
-                  className="group flex h-full flex-col rounded-lg border border-line p-7 transition-colors hover:border-blue"
+                  className="group flex h-full flex-col overflow-hidden rounded-lg border border-line transition-colors hover:border-blue"
                 >
-                  <span className="t-h3 font-bold text-navy group-hover:text-blue">
-                    {areaShortName(a)}
-                  </span>
-                  <span className="t-small mt-2.5 block text-slate">{a.blurb}</span>
-                  <span className="mt-6 block text-[0.9375rem] font-bold text-blue underline decoration-blue/35 underline-offset-4 group-hover:decoration-blue">
-                    AC services in {areaShortName(a)}
-                  </span>
+                  <div className="aspect-[16/10] overflow-hidden bg-navy">
+                    <AreaImage area={a} sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw" />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="t-h3 font-bold text-navy group-hover:text-blue">
+                      {areaShortName(a)}
+                    </span>
+                    <span className="t-small mt-2.5 block text-slate">{a.blurb}</span>
+                    <span className="mt-5 block text-[0.9375rem] font-bold text-blue underline decoration-blue/35 underline-offset-4 group-hover:decoration-blue">
+                      AC services in {areaShortName(a)}
+                    </span>
+                  </div>
                 </Link>
               </li>
             ))}

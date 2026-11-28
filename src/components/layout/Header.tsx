@@ -12,6 +12,7 @@ import { site, telHref, whatsappHref } from "@/lib/site";
 export type HeaderNav = {
   services: { href: string; name: string; icon: ServiceIconKey }[];
   areas: { href: string; name: string }[];
+  areaCount: number;
   showBlog: boolean;
 };
 
@@ -42,27 +43,32 @@ export function Logo({ onClick, tone = "light" }: { onClick?: () => void; tone?:
 
 export function Header({ nav }: { nav: HeaderNav }) {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [areasOpen, setAreasOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const servicesRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const menuId = useId();
+  const areasMenuId = useId();
   const mobileId = useId();
 
   const closeAll = () => {
     setServicesOpen(false);
+    setAreasOpen(false);
     setMobileOpen(false);
   };
 
   useEffect(() => {
-    if (!servicesOpen && !mobileOpen) return;
+    if (!servicesOpen && !areasOpen && !mobileOpen) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setServicesOpen(false);
+        setAreasOpen(false);
         setMobileOpen(false);
       }
     };
     const onPointer = (e: PointerEvent) => {
-      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setServicesOpen(false);
+        setAreasOpen(false);
       }
     };
     document.addEventListener("keydown", onKey);
@@ -71,7 +77,7 @@ export function Header({ nav }: { nav: HeaderNav }) {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("pointerdown", onPointer);
     };
-  }, [servicesOpen, mobileOpen]);
+  }, [servicesOpen, areasOpen, mobileOpen]);
 
   useEffect(() => {
     document.documentElement.style.overflow = mobileOpen ? "hidden" : "";
@@ -81,7 +87,6 @@ export function Header({ nav }: { nav: HeaderNav }) {
   }, [mobileOpen]);
 
   const links = [
-    { href: "/areas", label: "Areas" },
     { href: "/about", label: "About us" },
     ...(nav.showBlog ? [{ href: "/blog", label: "Guides" }] : []),
     { href: "/contact", label: "Contact" },
@@ -95,14 +100,17 @@ export function Header({ nav }: { nav: HeaderNav }) {
       <div className="shell flex h-[4.25rem] items-center justify-between gap-4 lg:h-[4.75rem]">
         <Logo onClick={closeAll} />
 
-        <nav aria-label="Main" className="hidden items-center lg:flex">
-          <div ref={servicesRef} className="relative">
+        <nav ref={navRef} aria-label="Main" className="hidden items-center lg:flex">
+          <div className="relative">
             <button
               type="button"
               className={`${navLink} flex items-center gap-1.5`}
               aria-expanded={servicesOpen}
               aria-controls={menuId}
-              onClick={() => setServicesOpen((v) => !v)}
+              onClick={() => {
+                setServicesOpen((v) => !v);
+                setAreasOpen(false);
+              }}
             >
               Services
               <ChevronDown
@@ -133,6 +141,49 @@ export function Header({ nav }: { nav: HeaderNav }) {
               <div className="mt-2 border-t border-line px-3 pt-3 pb-1">
                 <Link href="/services" onClick={closeAll} className="link text-[0.9375rem]">
                   See all services
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <button
+              type="button"
+              className={`${navLink} flex items-center gap-1.5`}
+              aria-expanded={areasOpen}
+              aria-controls={areasMenuId}
+              onClick={() => {
+                setAreasOpen((v) => !v);
+                setServicesOpen(false);
+              }}
+            >
+              Areas
+              <ChevronDown
+                size={16}
+                aria-hidden="true"
+                className={`transition-transform duration-200 ${areasOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            <div
+              id={areasMenuId}
+              hidden={!areasOpen}
+              className="absolute left-1/2 top-full mt-3 w-[34rem] -translate-x-1/2 rounded-lg border border-line bg-white p-3 shadow-[0_24px_60px_-20px_rgb(16_28_44/0.28)]"
+            >
+              <ul className="grid grid-cols-3 gap-1">
+                {nav.areas.map((a) => (
+                  <li key={a.href}>
+                    <Link
+                      href={a.href}
+                      onClick={closeAll}
+                      className="flex rounded-md px-3 py-2.5 text-[0.9688rem] font-semibold text-navy transition-colors hover:bg-mist hover:text-blue"
+                    >
+                      {a.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-2 border-t border-line px-3 pt-3 pb-1">
+                <Link href="/areas" onClick={closeAll} className="link text-[0.9375rem]">
+                  All {nav.areaCount} areas
                 </Link>
               </div>
             </div>
@@ -237,6 +288,11 @@ export function Header({ nav }: { nav: HeaderNav }) {
                   </Link>
                 </li>
               ))}
+              <li className="col-span-2">
+                <Link href="/areas" onClick={closeAll} className="link flex min-h-12 items-center">
+                  All {nav.areaCount} areas
+                </Link>
+              </li>
             </ul>
           </details>
           {links

@@ -1,3 +1,4 @@
+import type { Area } from "@/content/areas";
 import type { Post } from "@/content/posts";
 import type { Faq, Service } from "@/content/services";
 import { absoluteUrl, site } from "@/lib/site";
@@ -117,5 +118,22 @@ export function articleSchema(post: Post) {
     image: absoluteUrl("/opengraph-image.png"),
     author: { "@type": "Organization", name: site.name, url: site.url },
     publisher: { "@id": BUSINESS_ID },
+  };
+}
+
+export function areaServiceSchema(area: Area) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: area.title,
+    serviceType: "AC repair and maintenance",
+    description: area.metaDescription,
+    url: absoluteUrl(`/areas/${area.slug}`),
+    provider: { "@id": BUSINESS_ID },
+    areaServed: {
+      "@type": "Place",
+      name: area.name,
+      containedInPlace: { "@type": "City", name: "Dubai" },
+    },
   };
 }

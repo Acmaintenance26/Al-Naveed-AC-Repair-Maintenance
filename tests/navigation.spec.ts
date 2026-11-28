@@ -35,7 +35,6 @@ test.describe("desktop navigation", () => {
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: "Main" });
     for (const [name, url, heading] of [
-      ["Areas", "/areas", "Areas we serve in Dubai"],
       ["About us", "/about", "About Al Naveed AC Repair & Maintenance"],
       ["Guides", "/blog", "AC guides and advice"],
       ["Contact", "/contact", "Contact us"],
@@ -46,6 +45,19 @@ test.describe("desktop navigation", () => {
     }
     await page.getByRole("link", { name: /Al Naveed.*home page/ }).first().click();
     await expect(page).toHaveURL(/\/$/);
+  });
+
+  test("areas menu lists areas and links to all of them", async ({ page }) => {
+    await page.goto("/");
+    const nav = page.getByRole("navigation", { name: "Main" });
+    const trigger = nav.getByRole("button", { name: "Areas" });
+    await trigger.click();
+    await expect(trigger).toHaveAttribute("aria-expanded", "true");
+    await nav.getByRole("link", { name: "Dubai Marina", exact: true }).click();
+    await expect(page).toHaveURL(/\/areas\/dubai-marina$/);
+    await nav.getByRole("button", { name: "Areas" }).click();
+    await nav.getByRole("link", { name: /^All \d+ areas$/ }).click();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Areas we serve in Dubai");
   });
 
   test("header and hero calls to action point to the right places", async ({ page }) => {

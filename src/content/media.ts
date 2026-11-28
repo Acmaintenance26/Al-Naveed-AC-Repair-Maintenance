@@ -14,6 +14,8 @@ export type Photo = {
   alt: string;
   width: number;
   height: number;
+  /** Photographer and licence, when the photo needs a credit. */
+  credit?: string;
 };
 
 export type MediaSlot = "hero" | "residential" | "commercial" | "about" | "technician";
@@ -143,3 +145,13 @@ export const postPhotos: Record<string, Photo> = {
     height: 675,
   },
 };
+
+/**
+ * Real photos of each area's landmark, keyed by area slug. While a slug has no entry the page
+ * and its thumbnail show the drawn landmark scene instead.
+ *
+ * To use a photo: save it in /public/images/areas/<slug>.jpg (around 1600px wide) and add an
+ * entry here. Use only photos you own or that are licensed for this use, and add the credit
+ * if the licence requires one.
+ */
+export const areaPhotos: Record<string, Photo> = {};
