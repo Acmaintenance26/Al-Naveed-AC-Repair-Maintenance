@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { AreaImage } from "@/components/AreaImage";
+import { AreasBanner } from "@/components/illustrations/AreasBanner";
 import { PageHero } from "@/components/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { areaPath, areas, areaShortName } from "@/content/areas";
@@ -24,14 +25,20 @@ export default function AreasPage() {
         lead="We are based in Naif, Deira, and work across the city. Each area page describes the buildings and cooling systems typical there, and what to tell us when you book."
         actions
         bookHref="/book"
+        banner={<AreasBanner />}
       />
       <section className="section bg-white">
         <div className="shell">
           <p className="flex max-w-[60ch] gap-3 rounded-lg bg-mist p-6 text-[0.9688rem]">
-            <MapPin size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-blue" />
+            <MapPin
+              size={20}
+              aria-hidden="true"
+              className="mt-0.5 shrink-0 text-blue"
+            />
             <span>
               <span className="font-bold text-navy">Our workshop: </span>
-              {addressOneLine}. If your area is not listed below, call us and ask.
+              {addressOneLine}. If your area is not listed below, call us and
+              ask.
             </span>
           </p>
           <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -42,13 +49,18 @@ export default function AreasPage() {
                   className="group flex h-full flex-col overflow-hidden rounded-lg border border-line transition-colors hover:border-blue"
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-navy">
-                    <AreaImage area={a} sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw" />
+                    <AreaImage
+                      area={a}
+                      sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw"
+                    />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <span className="t-h3 font-bold text-navy group-hover:text-blue">
                       {areaShortName(a)}
                     </span>
-                    <span className="t-small mt-2.5 block text-slate">{a.blurb}</span>
+                    <span className="t-small mt-2.5 block text-slate">
+                      {a.blurb}
+                    </span>
                     <span className="mt-5 block text-[0.9375rem] font-bold text-blue underline decoration-blue/35 underline-offset-4 group-hover:decoration-blue">
                       AC services in {areaShortName(a)}
                     </span>
