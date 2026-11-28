@@ -311,9 +311,9 @@ export const areaPhotos: Record<string, Photo> = {
   },
   "dubai-marina": {
     src: "/images/areas/dubai-marina.jpg",
-    alt: "Waterfront walkway at Dubai Marina with high-rise towers across the water and cafes on the right",
-    width: 1440,
-    height: 900,
-    caption: "The Marina waterfront walk, with the towers across the water.",
+    alt: "Glass towers rising above the water at Dubai Marina, with yachts moored along the right bank",
+    width: 1200,
+    height: 627,
+    caption: "Towers rising from the water at Dubai Marina, with yachts moored alongside.",
   },
 };
