@@ -11,7 +11,7 @@ What the business needs to confirm, supply or decide before the site goes live. 
 | 3 | **Confirm the WhatsApp number** | The site assumes +971 50 297 7603 is on WhatsApp | `src/lib/site.ts`, `whatsapp` |
 | 4 | **Confirm the address wording** | Google shows "28C St, Naif, Deira". Your website shows "Shop # 2, Ayesha Mohammed Belhool Building". Another listing names "Hossain Building". The site combines the first two | `src/lib/site.ts`, `address` |
 | 5 | **Read the service pages** | The descriptions of what each visit covers are standard trade practice, written without sight of your own checklists. Correct anything that differs from how you work | `src/content/services.ts` |
-| 6 | **Confirm the areas you serve** | Ten areas are live, each with a 1,500–2,000 word page. The district-cooling and building details come from public sources and general trade knowledge, so check them against your own experience. Remove any area you do not cover. The area pictures are drawn illustrations, not photographs: to use a real photo, add it as `public/images/areas/<slug>.jpg` and list it in `areaPhotos` in `src/content/media.ts` | `src/content/areas.ts` |
+| 6 | **Confirm the areas you serve** | Twenty areas are live (ten in Step 1, ten more in Step 2), each with a 1,500–2,000 word page. The district-cooling and building details come from public sources and general trade knowledge, so check them against your own experience. Remove any area you do not cover. The area pictures are drawn illustrations, not photographs: to use a real photo, add it as `public/images/areas/<slug>.jpg` and list it in `areaPhotos` in `src/content/media.ts` | `src/content/areas.ts` |
 | 7 | **Have the legal pages reviewed** | The privacy policy and terms are plain-language drafts based on how the site works and on the UAE data protection law. They are not legal advice | `src/app/privacy-policy`, `src/app/terms` |
 | 8 | **Choose hosting and point the domain** | Not deployed | `docs/DEPLOYMENT.md` |
 | 9 | **Supply the old site's page addresses** | The reference site could not be read, so only `/contact-us` and `/about-us` are redirected. Other old addresses will show a 404 and lose their search ranking | `next.config.ts`, `redirects()` |
@@ -87,7 +87,7 @@ Until one is published, the Guides link does not appear in the navigation and `/
 
 ## 6. Area page facts worth a second look
 
-The area pages describe the buildings and cooling systems typical of each district, hedged with "many" and "often". They were written from general knowledge of Dubai, not from your job records. Two things to check in particular:
+The area pages describe the buildings and cooling systems typical of each district, hedged with "many" and "often". Cooling arrangements for Dubai Hills Estate, Arabian Ranches and International City were not confirmed, so the pages tell readers to check with building or community management. The ten Step 2 areas use drawn illustrations until real photos are supplied. They were written from general knowledge of Dubai, not from your job records. Two things to check in particular:
 
 - Which towers and communities you actually visit in each area
 - Whether building management rules (work permits, contractor registration) are described the way your team experiences them

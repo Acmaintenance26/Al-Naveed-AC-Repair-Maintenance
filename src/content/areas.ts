@@ -1,4 +1,14 @@
 import type { Faq } from "./services";
+import { alNahda } from "./area-pages/al-nahda";
+import { alQuoz } from "./area-pages/al-quoz";
+import { arabianRanches } from "./area-pages/arabian-ranches";
+import { barshaHeights } from "./area-pages/barsha-heights";
+import { burDubai } from "./area-pages/bur-dubai";
+import { dubaiHillsEstate } from "./area-pages/dubai-hills-estate";
+import { internationalCity } from "./area-pages/international-city";
+import { karama } from "./area-pages/karama";
+import { mirdif } from "./area-pages/mirdif";
+import { satwa } from "./area-pages/satwa";
 import { alBarsha } from "./area-pages/al-barsha";
 import { businessBay } from "./area-pages/business-bay";
 import { deira } from "./area-pages/deira";
@@ -24,7 +34,17 @@ export type AreaScene =
   | "circle"
   | "lakes"
   | "marina"
-  | "atlantis";
+  | "atlantis"
+  | "warehouses"
+  | "villas"
+  | "heights"
+  | "market"
+  | "street"
+  | "windtowers"
+  | "pond"
+  | "hills"
+  | "ranches"
+  | "clusters";
 
 /** One H2 block of an area page. Items render as H3 + paragraph. */
 export type AreaSection = {
@@ -71,6 +91,16 @@ export const areas: Area[] = [
   jlt,
   dubaiMarina,
   palmJumeirah,
+  alQuoz,
+  mirdif,
+  barshaHeights,
+  karama,
+  satwa,
+  burDubai,
+  alNahda,
+  dubaiHillsEstate,
+  arabianRanches,
+  internationalCity,
 ];
 
 /** Shown first on the homepage and in the menu. */

@@ -28,7 +28,8 @@ const intents: Intent[] = [
     reply: `I cannot quote prices. The cost depends on the unit, the fault and the parts needed, and our team gives it once they know the details. ${reach}`,
   },
   {
-    match: /book|appointment|schedule|visit|come (to|out)|send (a )?technician|slot|available|availability/i,
+    match:
+      /book|appointment|schedule|visit|come (to|out)|send (a )?technician|slot|available|availability/i,
     reply: `I cannot confirm appointment times, but you can send a [booking request](/book) and the team will call you to agree one. For anything urgent, call ${phone}. We are open 24 hours.`,
   },
   {
@@ -36,7 +37,8 @@ const intents: Intent[] = [
     reply: `Water usually means a blocked drain line, or ice melting off a frozen coil. Switch the AC off to stop more water forming and put towels down. A technician needs to clear the drain and check the coil. See [AC repair](/services/ac-repair-dubai). ${reach}`,
   },
   {
-    match: /not cool|n't cool|no cool|warm air|hot air|not cold|stopped cooling|isn't cold|not working|won't (start|turn)|doesn't (start|turn|work)/i,
+    match:
+      /not cool|n't cool|no cool|warm air|hot air|not cold|stopped cooling|isn't cold|not working|won't (start|turn)|doesn't (start|turn|work)/i,
     reply: `Common causes are a clogged filter, a dirty coil, low refrigerant from a leak, or a failed electrical part. You can safely check that the thermostat is set to cool and that the filter is clean. If it still blows warm air, it needs inspecting. See [AC repair](/services/ac-repair-dubai). ${reach}`,
   },
   {
@@ -89,7 +91,7 @@ const intents: Intent[] = [
   },
   {
     match: /area|cover|serve|come to|near me|my area/i,
-    reply: `We are based in Naif, Deira, and serve Dubai, including Downtown Dubai, Business Bay, Jumeirah, Al Barsha, JVC, JLT, Dubai Marina and Palm Jumeirah. See [all areas](/areas). If yours is not listed, call ${phone} and ask.`,
+    reply: `We are based in Naif, Deira, and serve Dubai, including Downtown Dubai, Business Bay, Jumeirah, Al Barsha, JVC, JLT, Dubai Marina, Palm Jumeirah, Al Quoz, Mirdif, Barsha Heights, Karama, Satwa, Bur Dubai, Al Nahda, Dubai Hills Estate, Arabian Ranches and International City. See [all areas](/areas). If yours is not listed, call ${phone} and ask.`,
   },
   {
     match: /phone|call|number|contact|whatsapp|email|reach|speak|talk|human|person|agent|someone/i,

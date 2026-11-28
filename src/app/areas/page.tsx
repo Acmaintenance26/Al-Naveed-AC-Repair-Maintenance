@@ -11,7 +11,7 @@ import { addressOneLine } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Areas We Serve in Dubai | AC Repair & Maintenance",
   description:
-    "Al Naveed AC Repair & Maintenance serves Dubai from Naif, Deira: Downtown, Business Bay, Jumeirah, Al Barsha, JVC, JLT, Dubai Marina and Palm Jumeirah.",
+    "Al Naveed AC Repair & Maintenance serves Dubai from Naif, Deira: Downtown, Business Bay, Jumeirah, Al Barsha, JVC, JLT, Dubai Marina, Palm Jumeirah and more.",
   path: "/areas",
 });
 
@@ -42,7 +42,10 @@ export default function AreasPage() {
                   className="group flex h-full flex-col overflow-hidden rounded-lg border border-line transition-colors hover:border-blue"
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-navy">
-                    <AreaImage area={a} sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw" />
+                    <AreaImage
+                      area={a}
+                      sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw"
+                    />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <span className="t-h3 font-bold text-navy group-hover:text-blue">

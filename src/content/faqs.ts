@@ -32,7 +32,7 @@ export const homeFaqs: Faq[] = [
   },
   {
     q: "Which areas of Dubai do you cover?",
-    a: "We are based in Naif, Deira, and serve Dubai, including Downtown Dubai, Business Bay, Jumeirah, Al Barsha, JVC, JLT, Dubai Marina and Palm Jumeirah. If your area is not listed, ask us.",
+    a: "We are based in Naif, Deira, and serve Dubai, including Downtown Dubai, Business Bay, Jumeirah, Al Barsha, JVC, JLT, Dubai Marina, Palm Jumeirah, Al Quoz, Mirdif, Barsha Heights, Karama, Satwa, Bur Dubai, Al Nahda, Dubai Hills Estate, Arabian Ranches and International City. If your area is not listed, ask us.",
   },
   {
     q: "How much will the work cost?",

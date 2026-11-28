@@ -21,6 +21,16 @@ export const AREAS = [
   "jlt",
   "dubai-marina",
   "palm-jumeirah",
+  "al-quoz",
+  "mirdif",
+  "barsha-heights",
+  "karama",
+  "satwa",
+  "bur-dubai",
+  "al-nahda",
+  "dubai-hills-estate",
+  "arabian-ranches",
+  "international-city",
 ];
 
 /** Still status: "draft" in src/content/posts.ts — hidden, noindex, awaiting approval. */
